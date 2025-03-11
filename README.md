@@ -121,7 +121,6 @@ def make_activation_heatmap(model, img_array, label, last_conv_layer_name, class
 ```
 
 ## Running the Model
-Load and preprocess the dataset.
-Train the CNN model using model.fit().
-
-Use make_activation_heatmap() to visualize the model's decision-making process.
+- Load and preprocess the dataset.
+- Train the CNN model using model.fit().
+- Use make_activation_heatmap() to visualize the model's decision-making process.
