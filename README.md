@@ -10,18 +10,12 @@ Ensure you have the following dependencies installed before running the scripts:
 ```bash
 pip install numpy pandas matplotlib tensorflow pillow
 ```
-##  Dataset
-
-The dataset consists of chest X-ray images stored in the following directory structure:
-
-/content/drive/MyDrive/Colab Notebooks/chest_xray_multiclass
-│── train
-│── test
 
 ## Code Explanation
 
 Importing Required Libraries
 
+```bash
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -32,7 +26,7 @@ from tensorflow import keras
 from tensorflow.keras import models, layers
 from tensorflow.keras.utils import image_dataset_from_directory
 from tensorflow.keras.callbacks import EarlyStopping
-
+```
 ## Loading and Preprocessing the Data
 ```bash
 train_dir = "/content/drive/MyDrive/Colab Notebooks/chest_xray_multiclass/train"
