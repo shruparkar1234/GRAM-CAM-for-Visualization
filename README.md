@@ -7,9 +7,9 @@ This repository provides an implementation of a Convolutional Neural Network (CN
 ## Requirements
 
 Ensure you have the following dependencies installed before running the scripts:
-
+```bash
 pip install numpy pandas matplotlib tensorflow pillow
-
+```
 ##  Dataset
 
 The dataset consists of chest X-ray images stored in the following directory structure:
@@ -34,7 +34,7 @@ from tensorflow.keras.utils import image_dataset_from_directory
 from tensorflow.keras.callbacks import EarlyStopping
 
 ## Loading and Preprocessing the Data
-
+```bash
 train_dir = "/content/drive/MyDrive/Colab Notebooks/chest_xray_multiclass/train"
 test_dir = "/content/drive/MyDrive/Colab Notebooks/chest_xray_multiclass/test"
 
@@ -43,9 +43,9 @@ training_data = image_dataset_from_directory(
 
 test_data = image_dataset_from_directory(
     test_dir, labels='inferred', label_mode='int', batch_size=32, image_size=(224,224))
-
+```
 ## Converting Dataset to NumPy Arrays
-
+```bash
 def dataset_to_numpy(dataset):
     images, labels = [], []
     for image_batch, label_batch in dataset:
@@ -55,9 +55,9 @@ def dataset_to_numpy(dataset):
 
 X_train, y_train = dataset_to_numpy(training_data)
 X_test, y_test = dataset_to_numpy(test_data)
-
+```
 ## Normalizing the Data
-
+```bash
 X_train = X_train.astype('float32') / 255
 X_test  = X_test.astype('float32') / 255
 
@@ -74,14 +74,14 @@ model = models.Sequential([
 ])
 
 model.summary()
-
+```
 ## Generating Activation Heatmap using Grad-CAM
-
+```bash
 def make_activation_heatmap(model, img_array, label, last_conv_layer_name, classifier_layer_names):
     pred = model.predict(img_array)
     print(f"Model's prediction : {np.argmax(pred)}")
     print(f"Actual label : {label}")
-
+    
     last_conv_layer = model.get_layer(last_conv_layer_name)
     last_conv_layer_model = keras.Model(model.inputs, last_conv_layer.output)
     
@@ -118,6 +118,7 @@ def make_activation_heatmap(model, img_array, label, last_conv_layer_name, class
     superimposed_img = keras.utils.array_to_img(jet_heatmap * 0.4 + img)
     plt.imshow(superimposed_img)
     plt.show()
+```
 
 ## Running the Model
 Load and preprocess the dataset.
